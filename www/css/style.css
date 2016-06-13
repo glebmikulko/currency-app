@@ -1,0 +1,121 @@
+.scroll-content {
+  background-color: #292929;
+  font-family: sans-serif;
+}
+
+#query {
+  color: #fec900;
+  width: 100%;
+  font-size: 22px;
+  padding: 7px;
+  border: 6px solid #353535;
+  background: url(../img/loupe.png) no-repeat scroll 12px 12px;
+  background-size: 24px;
+  padding-left:50px;
+  padding-bottom: 10px;
+  background-color: #3f3f3f;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+}
+
+#query::-webkit-input-placeholder {color:#B18C00;}
+#query::-moz-placeholder          {color:#B18C00;}
+#query:-moz-placeholder           {color:#B18C00;}
+#query:-ms-input-placeholder      {color:#B18C00;}
+
+
+#query:focus::-webkit-input-placeholder {text-indent: 100%; transition: text-indent 0.5s ease;}
+#query:focus::-moz-placeholder          {text-indent: 100%; transition: text-indent 0.5s ease;}
+#query:focus:-moz-placeholder           {text-indent: 100%; transition: text-indent 0.5s ease;}
+#query:focus:-ms-input-placeholder      {text-indent: 100%; transition: text-indent 0.5s ease;}
+
+#query:focus {
+  border: 6px solid #fec900;
+}
+
+.item {
+  background-color: #3f3f3f;
+  border-color: #353535;
+  border-width: 6px;
+  margin: 0;
+  margin-top: -6px;
+  padding: 3px;
+}
+
+a:active {
+  background: red;
+}
+
+.bar.bar-energized .title {
+  color: #292929;
+  font-family: sans-serif;
+  font-size: 28px;
+}
+
+
+img.icons {
+  padding-top: 5px;
+  max-width: 70%;
+}
+
+.icon-currency {
+  max-width: 50px;
+}
+
+.currency-wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+.currency-id {
+  color: #fec900;
+  font-size: 22px;
+}
+
+.currency-description {
+  color: #B18C00;
+  font-size: 16px;
+  padding-top: 8px;
+}
+
+.item-complex .item-content {
+  padding: 0;
+  background-color: inherit;
+}
+
+.wrapper {
+  color: #fec900;
+  font-size: 22px;
+  border: 6px solid #353535;
+  background-size: 24px;
+  background-color: #3f3f3f;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#coins {
+  max-height: 30px;
+  display: block;
+  margin: 0 auto;
+}
+
+.cur-info {
+  text-align: center;
+  font-size: 16px;
+  margin: 3px;
+}
+
+.cur-rate {
+  text-align: center;
+  font-size: 24px;
+  margin: 6px 0 10px 0;
+}
+
+table.cur-history {
+  width: 100%;
+}
+
+td, th {
+   text-align: center; /* Выравнивание по левому краю */
+}

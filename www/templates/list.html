@@ -1,0 +1,29 @@
+<ion-view view-title="Currency list">
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col">
+        <label>
+          <input placeholder="Search..." ng-model="searchText" id="query">
+        </label>
+
+        <ion-list ng-repeat="currency in list | filter:searchText" >
+         <ion-item class="reference" href="#/list/{{currency.id}}">
+           <div class="row">
+            <div class="col icon-currency">
+              <image ng-src="../img/cur_icons/{{currency.id}}.png" class="icons"/>
+            </div>
+            <div class="col currency-wrapper">
+              <div class="currency-id">
+                {{currency.id}}
+              </div>
+              <div class="currency-description">
+                {{currency.description}}
+              </div>
+            </div>
+          </div>
+         </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
