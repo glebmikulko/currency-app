@@ -120,16 +120,20 @@ table.cur-history {
 
 table{
   width: 100%;
+  border: 2px solid #3f3f3f;
+  padding: 0;
 }
 
 tr {
   width: 100%;
+  border: 1px solid #292929;
 }
 
 td, th {
    width: 50%;
    text-align: center;
    padding: 10px;
+   border-left: 1px solid #292929;
 }
 
 .table-container {

@@ -7,6 +7,18 @@ angular.module('starter.controllers', [])
   $scope.currency = Currencies.get($stateParams.currencyId);
   $scope.timeOffset = "year";
 
+  $scope.changeTimeOffset = function(offset){
+    $scope.timeOffset = offset;
+    // console.log($scope.rateArray);
+    HttpService.getRateArray($scope.currency.idNBRB, $scope.timeOffset, function(xmlDoc){
+      var x2js = new X2JS();
+      var data = x2js.xml2json(xmlDoc);
+      var rateArray = data.Currency.Record;
+      $scope.rateArray = rateArray;
+      $scope.$apply();
+    });
+  }
+
   HttpService.getLiveRate($scope.currency.id)
   .then(function(liveRate) {
      $scope.liveRate = liveRate;
