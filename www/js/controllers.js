@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
 
 .controller('CurrencyCtrl', function($scope, $stateParams, Currencies, HttpService) {
   $scope.currency = Currencies.get($stateParams.currencyId);
-  $scope.timeOffset = "week";
+  $scope.timeOffset = "year";
 
   HttpService.getLiveRate($scope.currency.id)
   .then(function(liveRate) {
@@ -19,7 +19,6 @@ angular.module('starter.controllers', [])
      var curArray = jsonObj.DailyExRates.Currency;
      for (var i = 0; i < curArray.length; i++) {
        if (curArray[i].CharCode === $scope.currency.id) {
-        //  console.log(curArray[i]);
          $scope.liveRateByNBRB = curArray[i].Rate;
        }
      }

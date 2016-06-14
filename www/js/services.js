@@ -74,7 +74,6 @@ angular.module('starter.services', [])
 
   return {
     getLiveRate: function(currencyId){
-      // console.log($http.get(url + "live?access_key=" + accessKey + "&currencies=BYR," + currencyId));
       return $http.get(url + "live?access_key=" + accessKey + "&currencies=BYR," + currencyId)
         .then(function(response) {
           var liveRateObj = response.data.quotes;
@@ -87,9 +86,6 @@ angular.module('starter.services', [])
     getRateArray: function(currencyIdNRBR, timeOffset, callback){
       var finishDate = getTodayDate("mm/dd/yyyy");
       var startDate = getHistoryDate(timeOffset, "mm/dd/yyyy");
-      console.log(finishDate);
-      console.log(startDate);
-      console.log(urlHistoryNBRB + "?curId=" + currencyIdNRBR + "&fromDate=" + startDate + "&toDate=" + finishDate)
       $.ajax({
          type: "GET",
          url: urlHistoryNBRB + "?curId=" + currencyIdNRBR + "&fromDate=" + startDate + "&toDate=" + finishDate,

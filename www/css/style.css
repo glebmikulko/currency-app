@@ -114,8 +114,24 @@ img.icons {
 
 table.cur-history {
   width: 100%;
+  height: 50px;
+  /*table-layout: fixed;*/
+}
+
+table{
+  width: 100%;
+}
+
+tr {
+  width: 100%;
 }
 
 td, th {
-   text-align: center; /* Выравнивание по левому краю */
+   width: 50%;
+   text-align: center;
+   padding: 10px;
+}
+
+.table-container {
+  height: 300px;
 }

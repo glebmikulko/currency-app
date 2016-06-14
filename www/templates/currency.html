@@ -14,24 +14,37 @@
         <img src="../img/coins.png" id="coins"/>
       </div>
     </div>
+
     <div class="button-bar row">
       <a class="button button-outline button-energized">Week</a>
       <a class="button button-outline button-energized">Month</a>
       <a class="button button-outline button-energized">Year</a>
     </div>
+
     <div class="row">
       <div class="col wrapper">
-        <table class="cur-history">
-          <tr>
-            <td>Date</td>
-            <td>Value</td>
-          </tr>
-          <tr ng-repeat="rate in rateArray">
-            <td>{{convertDateNBRB(rate._Date)}}</td>
-            <td>{{rate.Rate}}</td>
-          </tr>
-        </table>
+        <ion-scroll class="table-container">
+          <table>
+            <tr>
+              <td class="table-cell">
+                Date
+              </td>
+              <td class="table-cell">
+                Rate
+              </td>
+            </tr>
+            <tr ng-repeat="rateObj in rateArray">
+              <td class="table-cell">
+                {{convertDateNBRB(rateObj._Date)}}
+              </td>
+              <td class="table-cell">
+                {{rateObj.Rate}}
+              </td>
+            </tr>
+          </table>
+        </ion-scroll>
       </div>
     </div>
+
   </ion-content>
 </ion-view>
