@@ -26,6 +26,10 @@
             <td>Date</td>
             <td>Value</td>
           </tr>
+          <tr ng-repeat="rate in rateArray">
+            <td>{{convertDateNBRB(rate._Date)}}</td>
+            <td>{{rate.Rate}}</td>
+          </tr>
         </table>
       </div>
     </div>

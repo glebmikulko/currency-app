@@ -5,11 +5,11 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var list = [
-    {id: "USD", country: "USA", description: "United States Dollar" },
-    {id: "EUR", country: "Europe", description: "Euro"},
-    {id: "RUB", country: "Russia", description: "Russian Ruble"},
-    {id: "UAH", country: "Ukraine", description: "Ukrainian Hryvnia"},
-    {id: "CNY", country: "Japan", description: "Japanese Yen"}
+    {id: "USD", country: "USA", description: "United States Dollar", idNBRB: 145},
+    {id: "EUR", country: "Europe", description: "Euro", idNBRB: 19},
+    {id: "RUB", country: "Russia", description: "Russian Ruble", idNBRB: 190},
+    {id: "UAH", country: "Ukraine", description: "Ukrainian Hryvnia", idNBRB: 224},
+    {id: "CNY", country: "Japan", description: "Japanese Yen", idNBRB: 254}
   ];
 
   return {
@@ -31,28 +31,46 @@ angular.module('starter.services', [])
   var url = 'http://apilayer.net/api/';
   var accessKey = 'a3d9ac994b72ff6f89ed48dc83b2a813';
   var urlNBRB = 'http://www.nbrb.by/Services/XmlExRates.aspx';
+  var urlHistoryNBRB = 'http://www.nbrb.by/Services/XmlExRatesDyn.aspx';
   var historyArray = new Array();
-  var getTodayDate = function(format){
+  var dateToFormat = function(date, format){
     if (format === "mm/dd/yyyy"){
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth()+1; //January is 0!
+      var dd = date.getDate();
+      var mm = date.getMonth()+1; //January is 0!
 
-      var yyyy = today.getFullYear();
+      var yyyy = date.getFullYear();
       if(dd<10){
           dd='0'+dd
       }
       if(mm<10){
           mm='0'+mm
       }
-      var today = mm+'/'+dd+'/'+yyyy;
-      return today;
+      var date = mm+'/'+dd+'/'+yyyy;
+      return date;
     }
   }
+  var getTodayDate = function(format){
+    var today = new Date();
+    return dateToFormat(today, format);
+  }
 
-  // var getHistoryDate = function(offset){
-  //
-  // }
+  var getHistoryDate = function(timeOffset, format){
+    if (format === 'mm/dd/yyyy'){
+      var startDate = new Date();
+      switch (timeOffset) {
+        case "week":
+          startDate.setDate(startDate.getDate() - 7);
+          break;
+        case "month":
+          startDate.setMonth(startDate.getMonth() - 1);
+          break;
+        case "year":
+          startDate.setYear(startDate.getFullYear() - 1);
+          break;
+      }
+      return dateToFormat(startDate, format);
+    }
+  }
 
   return {
     getLiveRate: function(currencyId){
@@ -66,12 +84,15 @@ angular.module('starter.services', [])
           return liveRate;
       });
     },
-    getRateArray: function(currencyIdNRBR, callback, timeFrame){
+    getRateArray: function(currencyIdNRBR, timeOffset, callback){
       var finishDate = getTodayDate("mm/dd/yyyy");
+      var startDate = getHistoryDate(timeOffset, "mm/dd/yyyy");
       console.log(finishDate);
+      console.log(startDate);
+      console.log(urlHistoryNBRB + "?curId=" + currencyIdNRBR + "&fromDate=" + startDate + "&toDate=" + finishDate)
       $.ajax({
          type: "GET",
-         url: urlNBRB,
+         url: urlHistoryNBRB + "?curId=" + currencyIdNRBR + "&fromDate=" + startDate + "&toDate=" + finishDate,
          dataType: "xml",
          success: callback
      });
@@ -82,6 +103,12 @@ angular.module('starter.services', [])
        url: urlNBRB,
        dataType: "xml"
      });
+   },
+   convertDateNBRB: function(){
+     return function(stringDate){
+       var parts = stringDate.split("/");
+       return parts[1] + '.' + parts[0] + '.' + parts[2];
+     }
    }
   };
 });
