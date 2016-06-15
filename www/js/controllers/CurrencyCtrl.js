@@ -40,4 +40,55 @@ angular.module('starter.controllers')
    });
 
    $scope.convertDateNBRB = DateFactory.convertDateNBRB();
+
+   $scope.buildChart = function(rateObjArray){
+     if (rateObjArray && rateObjArray.length){
+       var arrLength = rateObjArray.length;
+       console.log(arrLength);
+       var rateArray = new Array(arrLength);
+       var dateArray = new Array(arrLength);
+       for (var i=0; i < arrLength; i++){
+         rateArray[i] = rateObjArray[i].Rate;
+         dateArray[i] = rateObjArray[i]._Date;
+       }
+      //  console.log(rateArray);
+      //  console.log(dateArray);
+       var pointR = 3;
+       if (arrLength > 100){
+         pointR = 0;
+       }
+       var ctx = document.getElementById("myChart");
+       var myChart = new Chart(ctx, {
+           type: 'line',
+           data: {
+               labels: dateArray,
+               datasets: [{
+                   label: 'Rate',
+                   data: rateArray,
+                   backgroundColor:'rgba(254, 201, 0, 0.3)',
+                   borderWidth: 2,
+                   pointBorderWidth: 0,
+                   pointRadius: pointR
+               }]
+           },
+           options: {
+             title: {
+                display: true,
+                text: 'Custom Chart Title',
+                fontSize: 18,
+                fontFamily: "'Helvetica Neue'"
+              },
+              legend: {
+                  display: false
+              },
+              animation: {
+                duration: 300
+              }
+              // line: {
+              //   tension: 0.2
+              // }
+           }
+       });
+   }
+  }
 });
