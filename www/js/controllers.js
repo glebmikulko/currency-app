@@ -3,9 +3,9 @@ angular.module('starter.controllers', [])
   $scope.list = Currencies.all();
 })
 
-.controller('CurrencyCtrl', function($scope, $stateParams, Currencies, HttpService) {
+.controller('CurrencyCtrl', function($scope, $stateParams, Currencies, HttpService, dateFactory) {
   $scope.currency = Currencies.get($stateParams.currencyId);
-  $scope.timeOffset = "year";
+  $scope.timeOffset = "week";
 
   $scope.changeTimeOffset = function(offset){
     $scope.timeOffset = offset;
@@ -43,5 +43,5 @@ angular.module('starter.controllers', [])
      $scope.rateArray = rateArray;
    });
 
-   $scope.convertDateNBRB = HttpService.convertDateNBRB();
+   $scope.convertDateNBRB = dateFactory.convertDateNBRB();
 });
