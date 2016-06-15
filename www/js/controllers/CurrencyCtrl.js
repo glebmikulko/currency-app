@@ -1,10 +1,6 @@
-angular.module('starter.controllers', [])
-.controller('ListCtrl', function($scope, Currencies) {
-  $scope.list = Currencies.all();
-})
-
-.controller('CurrencyCtrl', function($scope, $stateParams, Currencies, HttpService, dateFactory) {
-  $scope.currency = Currencies.get($stateParams.currencyId);
+angular.module('starter.controllers')
+.controller('CurrencyCtrl', function($scope, $stateParams, CurrencyFactory, HttpService, DateFactory) {
+  $scope.currency = CurrencyFactory.get($stateParams.currencyId);
   $scope.timeOffset = "week";
 
   $scope.changeTimeOffset = function(offset){
@@ -31,7 +27,7 @@ angular.module('starter.controllers', [])
      var curArray = jsonObj.DailyExRates.Currency;
      for (var i = 0; i < curArray.length; i++) {
        if (curArray[i].CharCode === $scope.currency.id) {
-         $scope.liveRateByNBRB = curArray[i].Rate;
+         $scope.liveRateByNBRB = Math.floor(curArray[i].Rate);
        }
      }
    });
@@ -43,5 +39,5 @@ angular.module('starter.controllers', [])
      $scope.rateArray = rateArray;
    });
 
-   $scope.convertDateNBRB = dateFactory.convertDateNBRB();
+   $scope.convertDateNBRB = DateFactory.convertDateNBRB();
 });
