@@ -109,7 +109,13 @@ img.icons {
 .cur-rate {
   text-align: center;
   font-size: 24px;
-  margin: 6px 0 10px 0;
+  margin: 10px 0 10px 0;
+}
+
+.chart-title {
+  text-align: center;
+  font-size: 24px;
+  margin: 10px;
 }
 
 table.cur-history {
