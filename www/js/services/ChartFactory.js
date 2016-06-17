@@ -4,7 +4,6 @@ angular.module('starter.services')
     buildChart: function(rateObjArray){
       if (rateObjArray && rateObjArray.length){
         var arrLength = rateObjArray.length;
-        console.log(arrLength);
         var rateArray = new Array(arrLength);
         var dateArray = new Array(arrLength);
         for (var i=0; i < arrLength; i++){

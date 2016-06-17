@@ -1,0 +1,162 @@
+@common-font: sans-serif;
+@color-grey_dark: #292929;
+@color-grey_border: #353535;
+@color-grey_light: #3f3f3f;
+@color-yellow_bright: #fec900;
+@color-yellow_dark: #B18C00;
+
+@title-fontsize: 24px;
+@common-fontsize: 22px;
+@info-fontsize: 16px;
+
+
+.scroll-content {
+  background-color: @color-grey_dark;
+  font-family: @common-font;
+}
+
+.border(@width: 6px; @style: solid; @color: @color-grey_border){
+  border: @width @style @color;
+}
+
+#query {
+  color: @color-yellow_bright;
+  width: 100%;
+  font-size: @common-fontsize;
+  padding: 7px 7px 10px 50px;
+  border: 6px solid @color-grey_border;
+  background: url(../img/loupe.png) no-repeat scroll 12px 12px;
+  background-size: 24px;
+  background-color: @color-grey_light;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.placeholder() {
+  color: @color-yellow_dark;
+}
+
+#query::-webkit-input-placeholder {.placeholder;}
+#query::-moz-placeholder          {.placeholder;}
+#query:-moz-placeholder           {.placeholder;}
+#query:-ms-input-placeholder      {.placeholder;}
+
+.placeholder-animation() {
+  text-indent: 100%;
+  transition: text-indent 0.5s ease;
+}
+
+#query:focus::-webkit-input-placeholder {.placeholder-animation;}
+#query:focus::-moz-placeholder          {.placeholder-animation;}
+#query:focus:-moz-placeholder           {.placeholder-animation;}
+#query:focus:-ms-input-placeholder      {.placeholder-animation;}
+
+#query:focus {
+  border: 6px solid @color-yellow_bright;
+}
+
+.item {
+  background-color: @color-grey_light;
+  .border;
+  margin: 0;
+  margin-top: -6px;
+  padding: 3px;
+}
+
+.bar.bar-energized .title {
+  color: @color-grey_dark;
+  font-family: @common-font;
+  font-size: 28px;
+}
+
+img.icons {
+  padding-top: 5px;
+  max-width: 70%;
+}
+
+.icon-currency {
+  max-width: 50px;
+}
+
+.currency-wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+.currency-id {
+  color: @color-yellow_bright;
+  font-size: @common-fontsize;
+}
+
+.currency-description {
+  color: @color-yellow_dark;
+  font-size: @info-fontsize;
+  padding-top: 8px;
+}
+
+.item-complex .item-content {
+  padding: 0;
+  background-color: inherit;
+}
+
+.wrapper {
+  color: @color-yellow_bright;
+  font-size: @common-fontsize;
+  border: 6px solid @color-grey_border;
+  background-size: 24px;
+  background-color: @color-grey_light;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#coins {
+  max-height: 30px;
+  display: block;
+  margin: 0 auto;
+}
+
+.cur-info {
+  text-align: center;
+  font-size: @info-fontsize;
+  margin: 3px;
+}
+
+.cur-rate {
+  text-align: center;
+  font-size: @common-fontsize;
+  margin: 10px 0 10px 0;
+}
+
+.chart-title {
+  text-align: center;
+  font-size: @title-fontsize;
+  margin: 10px;
+}
+
+
+table{
+  width: 100%;
+  border: 2px solid @color-grey_light;
+  padding: 0;
+  .cur-history {
+    width: 100%;
+    height: 50px;
+  }
+}
+
+tr {
+  width: 100%;
+  border: 1px solid @color-grey_dark;
+}
+
+td, th {
+   width: 50%;
+   text-align: center;
+   padding: 10px;
+   border-left: 1px solid @color-grey_dark;
+}
+
+.table-container {
+  height: 300px;
+}
