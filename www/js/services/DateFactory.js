@@ -7,13 +7,13 @@ angular.module('starter.services')
 
       var yyyy = date.getFullYear();
       if(dd<10){
-          dd='0'+dd
+          dd='0'+dd;
       }
       if(mm<10){
-          mm='0'+mm
+          mm='0'+mm;
       }
-      var date = mm+'/'+dd+'/'+yyyy;
-      return date;
+      var dateStr = mm+'/'+dd+'/'+yyyy;
+      return dateStr;
     }
   };
   return {
@@ -21,7 +21,7 @@ angular.module('starter.services')
       return function(stringDate){
         var parts = stringDate.split("/");
         return parts[1] + '.' + parts[0] + '.' + parts[2];
-      }
+      };
     },
     dateToFormat: dateToFormat,
     getTodayDate: function(format){
@@ -45,5 +45,5 @@ angular.module('starter.services')
         return dateToFormat(startDate, format);
       }
     }
-  }
-})
+  };
+});

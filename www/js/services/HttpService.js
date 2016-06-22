@@ -4,7 +4,7 @@ angular.module('starter.services')
   var accessKey = 'a3d9ac994b72ff6f89ed48dc83b2a813';
   var urlNBRB = 'http://www.nbrb.by/Services/XmlExRates.aspx';
   var urlHistoryNBRB = 'http://www.nbrb.by/Services/XmlExRatesDyn.aspx';
-  var historyArray = new Array();
+  var historyArray = [];
 
   return {
     getLiveRate: function(currencyId){
@@ -35,4 +35,4 @@ angular.module('starter.services')
      });
    }
   };
-})
+});

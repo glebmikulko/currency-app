@@ -14,7 +14,7 @@ angular.module('starter.controllers')
       ChartFactory.buildChart(rateArray);
       $scope.$apply();
     });
-  }
+  };
 
   HttpService.getLiveRate($scope.currency.id)
   .then(function(liveRate) {
